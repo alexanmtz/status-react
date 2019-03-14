@@ -93,8 +93,8 @@
                                       :align-items :center
                                       :align-content :center}
                               :on-press on-press}
-   [react/text {:style {:font-size 9
-                        :color colors/white}
+   [react/text {:style {:font-size 10
+                        :color     colors/white}
                 :font :medium} tag]])
 
 (defn search-input [search-filter]

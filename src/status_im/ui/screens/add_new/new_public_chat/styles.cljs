@@ -4,8 +4,7 @@
 
 (def group-chat-name-input
   {:font-size      17
-   :padding-bottom 0
-   :color          colors/black})
+   :padding-bottom 0})
 
 (def topic-hash
   (merge group-chat-name-input

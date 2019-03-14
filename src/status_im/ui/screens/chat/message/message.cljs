@@ -47,7 +47,8 @@
           (commands/generate-preview command (commands/add-chat-contacts contacts command-message))
           [react/text (str "Unhandled command: " (-> command-message :content :command-path first))])))))
 
-(defview message-timestamp [t justify-timestamp? outgoing command? content content-type]
+(defview message-timestamp
+  [t justify-timestamp? outgoing command? content content-type]
   (when-not command?
     [react/text {:style (style/message-timestamp-text
                          justify-timestamp?
@@ -62,13 +63,6 @@
    [message-timestamp timestamp-str justify-timestamp? outgoing (or (get content :command-path)
                                                                     (get content :command-ref))
     content content-type]])
-
-(defn timestamp-with-padding
-  "We can't use CSS as nested Text element don't accept margins nor padding
-  so we pad the invisible placeholder with some spaces to avoid having too
-  close to the text"
-  [t]
-  (str "   " t))
 
 (defview quoted-message [{:keys [from text]} outgoing current-public-key]
   (letsubs [username [:contacts/contact-name-by-identity from]]
@@ -99,14 +93,16 @@
      [react/view
       (when (:response-to content)
         [quoted-message (:response-to content) outgoing current-public-key])
-      [react/text (cond-> {:style           (style/text-message collapsible? outgoing)}
-                    (and collapsible? (not expanded?))
-                    (assoc :number-of-lines constants/lines-collapse-threshold))
+      [react/text
+       (cond-> {:style (style/text-message collapsible? outgoing)}
+         (and collapsible? (not expanded?))
+         (assoc :number-of-lines constants/lines-collapse-threshold))
        (if-let [render-recipe (:render-recipe content)]
          (chat.utils/render-chunks render-recipe message)
          (:text content))
-       [react/text {:style (style/message-timestamp-placeholder-text outgoing)}
-        (timestamp-with-padding timestamp-str)]]
+       [react/text {:style {:color (if outgoing colors/blue colors/blue-light)}}
+        (str " AAAAA")]]
+
       (when collapsible?
         [expand-button expanded? chat-id message-id])])
    {:justify-timestamp? true}])

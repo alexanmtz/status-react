@@ -28,7 +28,7 @@
       (format-author from username style)))
 
 (def ^:private styling->prop
-  {:bold      {:style {:font-weight :bold}}
+  {:bold      {:style {:font-weight 700}}
    :italic    {:style {:font-style  :italic}}
    :backquote {:style {:background-color colors/black
                        :color            colors/green}}})

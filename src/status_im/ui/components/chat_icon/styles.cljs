@@ -43,8 +43,7 @@
 (def default-chat-icon-text
   {:color       colors/white
    :font-size   20
-   :opacity     0.8
-   :line-height 24})
+   :opacity     0.8})
 
 (def message-status-icon-text
   {:margin-top -2

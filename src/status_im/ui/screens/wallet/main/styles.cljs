@@ -27,13 +27,10 @@
    :padding-horizontal 16})
 
 (def backup-seed-phrase-title
-  {:font-size   15
-   :line-height 20
-   :color       colors/white})
+  {:color colors/white})
 
 (def backup-seed-phrase-description
-  {:line-height 20
-   :color       colors/white-transparent})
+  {:color colors/white-transparent})
 
 (def total-balance-container
   {:align-items      :center
@@ -45,15 +42,15 @@
 
 (def total-balance-value
   {:font-size   32
-   :font-weight :bold
+   :font-weight 700
    :color       colors/white})
 
 (def total-balance-tilde
   {:color colors/white-transparent})
 
-(defstyle total-balance-currency
+(def total-balance-currency
   {:font-size   32
-   :font-weight :bold
+   :font-weight 700
    :margin-left 6
    :color       colors/white-transparent})
 
@@ -91,8 +88,7 @@
    :background-color colors/white})
 
 (def asset-section-header
-  {:font-size     15
-   :color         colors/gray
+  {:color         colors/gray
    :margin-left   16
    :margin-top    7
    :margin-bottom 3})
@@ -110,8 +106,7 @@
 
 (def asset-item-value
   {:flex      -1
-   :font-size 16
-   :color     colors/black})
+   :font-size 16})
 
 (def asset-item-currency
   {:font-size   16
@@ -125,9 +120,7 @@
 
 (def wallet-address
   {:color       colors/white
-   :text-align  :center
-   :font-size   15
-   :line-height 20})
+   :text-align  :center})
 
 (def address-section
   {:flex-grow   1

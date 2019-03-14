@@ -68,10 +68,8 @@
                               :height 160}}]]
       [react/view {:flex               1
                    :padding-horizontal 30}
-       [react/text {:style {:font-weight :bold
-                            :color       colors/black
-                            :font-size   22
-                            :text-align  :center}}
+       [react/text {:style {:typography :header
+                            :text-align :center}}
         (i18n/label :t/reset-card-description)]
        [activity-indicator disabled?]]
       [react/view {:flex-direction   :row
@@ -88,8 +86,7 @@
   [react/view
    [react/text {:style {:font-size          20
                         :text-align         :center
-                        :padding-horizontal 40
-                        :color              colors/black}}
+                        :padding-horizontal 40}}
     (i18n/label :t/keycard-blocked)]])
 
 (defview keycard-settings []

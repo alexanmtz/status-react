@@ -45,8 +45,7 @@
                               :accessibility-label :got-it-button}
    [react/view {:align-items      :center
                 :padding-vertical 18}
-    [react/text {:style      {:color     colors/white
-                              :font-size 15}
+    [react/text {:style      {:color colors/white}
                  :font       (if platform/android? :medium :default)
                  :uppercase? true}
      (i18n/label :t/done)]]])

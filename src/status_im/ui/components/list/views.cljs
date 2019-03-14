@@ -136,7 +136,7 @@
           [react/view {:style styles/new-label}
            [react/text {:style styles/new-label-text}
             (string/upper-case (i18n/label :t/new))]])
-        [react/text {:style (styles/settings-item-text-new text-color)}
+        [react/text {:style (styles/settings-item-text text-color)}
          text]]
        [react/view {:style {:margin-top 2
                             :justify-content :flex-start}}

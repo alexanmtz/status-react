@@ -8,7 +8,8 @@
             [status-im.utils.platform :as platform]
             [status-im.i18n :as i18n]
             [status-im.react-native.js-dependencies :as js-dependencies]
-            [status-im.ui.components.colors :as colors]))
+            [status-im.ui.components.colors :as colors]
+            [status-im.ui.components.typography :as typography]))
 
 (defn get-react-property [name]
   (if js-dependencies/react-native
@@ -84,39 +85,28 @@
 (def desktop-notification (.-DesktopNotification (.-NativeModules js-dependencies/react-native)))
 
 (def slider (get-class "Slider"))
+
 ;; Accessor methods for React Components
-
-(def default-font {:font-family "Inter UI"})
-
-(defn add-font-style [style-key opts]
-  (let [style (get opts style-key)]
-    (-> opts
-        (dissoc :font)
-        (assoc style-key (merge default-font style)))))
-
-(defn transform-to-uppercase [{:keys [uppercase? force-uppercase?]} ts]
-  (if (or force-uppercase? (and uppercase? platform/android?))
-    (vec (map #(when % (string/upper-case %)) ts))
-    ts))
-
 (defn text
-  ([t]
-   [text-class t])
-  ([opts t & ts]
-   (->> (conj ts t)
-        (transform-to-uppercase opts)
-        (concat [text-class (add-font-style :style opts)])
-        (vec))))
+  [{:keys [style] :as options} label & nested-text-elements]
+  (let [text-element [text-class
+                      (-> options
+                          (update :style typography/get-style))
+                      label]]
+    (if (empty? nested-text-elements)
+      text-element
+      (vec (concat text-element nested-text-elements)))))
 
-(defn text-input [{:keys [style] :as opts} text]
-  [text-input-class (merge
-                     {:underline-color-android :transparent
-                      :placeholder-text-color  colors/text-gray
-                      :placeholder             (i18n/label :t/type-a-message)
-                      :value                   text}
-                     (-> opts
-                         (dissoc :font)
-                         (assoc :style (merge default-font style))))])
+(defn text-input
+  [options text]
+  [text-input-class
+   (merge
+    {:underline-color-android :transparent
+     :placeholder-text-color  colors/text-gray
+     :placeholder             (i18n/label :t/type-a-message)
+     :value                   text}
+    (-> options
+        (update :style typography/get-style)))])
 
 (defn i18n-text
   [{:keys [style key]}]

@@ -44,27 +44,27 @@
              [react/text {:style {:color colors/white}}
               (i18n/label :t/extensions-disclaimer)]]
             [cartouche {:header (i18n/label :t/identifier)}
-             [react/text {:style styles/text}
+             [react/text {}
               (str (get-in data ['meta :name]))]]
             [cartouche {:header (i18n/label :t/name)}
-             [react/text {:style styles/text}
+             [react/text {}
               (str (get-in data ['meta :name]))]]
             [cartouche {:header (i18n/label :t/description)}
-             [react/text {:style styles/text}
+             [react/text {}
               (str (get-in data ['meta :description]))]]
             [cartouche {:header (i18n/label :t/hooks)}
              (into [react/view] (for [hook (hooks data)]
-                                  [react/text {:style styles/text}
+                                  [react/text {}
                                    (str hook)]))]
             [cartouche {:header (i18n/label :t/permissions)}
-             [react/text {:style styles/text}
+             [react/text {}
               (i18n/label :t/none)]]
             [cartouche {:header (i18n/label :t/errors)}
              (if errors
                (into [react/view] (for [error errors]
-                                    [react/text {:style styles/text}
+                                    [react/text {}
                                      (str (name (:pluto.reader.errors/type error)) " " (str (:pluto.reader.errors/value error)))]))
-               [react/text {:style styles/text}
+               [react/text {}
                 (i18n/label :t/none)])]]]
           [react/view styles/bottom-container
            [react/view components.styles/flex]

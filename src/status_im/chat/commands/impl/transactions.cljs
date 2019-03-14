@@ -39,7 +39,7 @@
     [react/view transactions-styles/asset-main
      [react/image {:source (-> asset :icon :source)
                    :style  transactions-styles/asset-icon}]
-     [react/text {:style transactions-styles/asset-symbol}
+     [react/text {}
       (wallet.utils/display-symbol asset)]
      [react/text {:style transactions-styles/asset-name} name]]
     ;;TODO(goranjovic) : temporarily disabled to fix https://github.com/status-im/status-react/issues/4963
@@ -54,7 +54,7 @@
     [react/view transactions-styles/asset-main
      [react/image {:source (-> asset :icon :source)
                    :style  transactions-styles/asset-icon}]
-     [react/text {:style transactions-styles/asset-symbol} name]]
+     [react/text {} name]]
     [react/text {:style {:font-size     16
                          :color         colors/gray
                          :padding-right 14}}
@@ -209,8 +209,7 @@
        [react/view
         [react/view transactions-styles/command-send-amount-row
          [react/view transactions-styles/command-send-amount
-          [react/text {:style (transactions-styles/command-send-amount-text outgoing)
-                       :font  :medium}
+          [react/text {:style (transactions-styles/command-send-amount-text outgoing)}
            amount
            [react/text {:style (transactions-styles/command-amount-currency-separator outgoing)}
             "."]

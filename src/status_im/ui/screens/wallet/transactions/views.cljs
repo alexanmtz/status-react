@@ -67,8 +67,7 @@
          [react/text {:style           styles/tx-amount
                       :ellipsize-mode  "tail"
                       :number-of-lines 1}
-          [react/text {:accessibility-label :amount-text
-                       :style               styles/amount-text}
+          [react/text {:accessibility-label :amount-text}
            (-> value  (money/internal->formatted symbol decimals) money/to-fixed str)]
           " "
           [react/text {:accessibility-label :currency-text}

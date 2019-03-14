@@ -104,7 +104,7 @@
      (icon-style (styles/pairing-button-icon true))]]
    [react/view {:style styles/pairing-actions-text}
     [react/view
-     [react/text {:style styles/installation-item-name-text}
+     [react/text {}
       (str
        installation-name
        " ("
@@ -128,7 +128,7 @@
       (icon-style (styles/pairing-button-icon enabled?))]]
     [react/view {:style styles/pairing-actions-text}
      [react/view
-      [react/text {:style styles/installation-item-name-text}
+      [react/text {}
        (if (string/blank? name)
          (str
           (i18n/label :t/pairing-no-info)

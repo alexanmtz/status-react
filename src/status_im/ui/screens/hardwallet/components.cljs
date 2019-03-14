@@ -18,14 +18,14 @@
      [react/view {:padding         20
                   :justify-content :center}
       [react/text {:style {:font-size   18
-                           :font-weight :bold}}
+                           :font-weight 700}}
        "Application info"]
       [react/view {:margin-top 20}
        (if-not error
          (for [[k v] info]
-           ^{:key k} [react/text {:style {:font-size 15}}
+           ^{:key k} [react/text {}
                       (str k " " v)])
-         [react/text {:style {:font-size 15}}
+         [react/text {}
           "Applet is not installed"])]
       [react/touchable-highlight
        {:on-press #(reset! visible? false)}

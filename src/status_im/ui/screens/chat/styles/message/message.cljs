@@ -7,8 +7,7 @@
 
 (defn style-message-text
   [outgoing]
-  {:font-size      15
-   :color          (if outgoing colors/white colors/text)})
+  {:color (if outgoing colors/white colors/text)})
 
 (defn message-padding-top
   [{:keys [first-in-group? display-username?]}]
@@ -45,11 +44,6 @@
          (when justify-timestamp? {:position              :absolute
                                    :bottom                8
                                    (if rtl? :left :right) 12})))
-
-(defn message-timestamp-placeholder-text [outgoing]
-  (assoc message-timestamp
-         :color
-         (if outgoing colors/blue colors/blue-light)))
 
 (def message-expand-button
   {:color         colors/gray
@@ -123,14 +117,12 @@
 
 (defn text-message
   [collapsed? outgoing]
-  (assoc (style-message-text outgoing) :margin-bottom (if collapsed? 2 0)))
+  (assoc (style-message-text outgoing)
+         :margin-bottom (if collapsed? 2 0)))
 
 (defnstyle emoji-message
   [{:keys [incoming-group]}]
   {:font-size 40
-   :color     colors/text
-   :android   {:line-height 45}
-   :ios       {:line-height 46}
    :margin-top (if incoming-group 4 0)})
 
 (defn message-view
@@ -168,8 +160,7 @@
 
 (defn message-author-name [chosen?]
   {:font-size           (if chosen? 13 12)
-   :font-weight         (if chosen? "500" "400")
-   :line-height         16
+   :font-weight         (if chosen? 500 400)
    :padding-top         6
    :padding-left        12
    :padding-right       16

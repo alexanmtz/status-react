@@ -23,9 +23,9 @@
     "node_modules/google-breakpad"
   ],
   "desktopFonts": [
-    "../../../../../resources/fonts/Inter-UI-Bold.otf",
-    "../../../../../resources/fonts/Inter-UI-Medium.otf",
-    "../../../../../resources/fonts/Inter-UI-Regular.otf"
+    "../../../../../resources/fonts/Inter-Bold.otf",
+    "../../../../../resources/fonts/Inter-Medium.otf",
+    "../../../../../resources/fonts/Inter-Regular.otf"
   ],
   "dependencies": {
     "assert": "1.4.1",

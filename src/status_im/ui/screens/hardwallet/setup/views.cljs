@@ -100,8 +100,7 @@
        [react/view styles/recovery-phrase-inner-container
         [react/view styles/center-container
          [react/text {:style           styles/center-title-text
-                      :number-of-lines 2
-                      :font            :bold}
+                      :number-of-lines 2}
           (i18n/label :t/your-recovery-phrase)]
          [react/view
           [react/view {:style {:margin-top        17
@@ -117,7 +116,7 @@
                                 :background-color colors/gray-lighter}}]
            [seed.views/six-words (subvec mnemonic-vec 6 12)]]
           [react/view styles/recovery-phrase-description
-           [react/text {:style styles/recovery-phrase-description-text}
+           [react/text {}
             (i18n/label :t/your-recovery-phrase-description)]]]]]
        [react/view styles/next-button-container
         [react/view components.styles/flex]
@@ -218,8 +217,7 @@
     [react/view styles/enter-pair-code-container
      [react/view styles/enter-pair-code-title-container
       [react/view
-       [react/text {:style styles/enter-pair-code-title-text
-                    :font  :bold}
+       [react/text {:style styles/enter-pair-code-title-text}
         (i18n/label :t/enter-pair-code)]
        [react/text {:style styles/enter-pair-code-explanation-text}
         (i18n/label :t/enter-pair-code-description)]]
@@ -280,10 +278,10 @@
                            ["5" (i18n/label :t/recovery-phrase)]]]
         ^{:key number} [react/view styles/remaining-step-row
                         [react/view styles/remaining-step-row-text
-                         [react/text {:style {:color colors/black}}
+                         [react/text {}
                           number]]
                         [react/view styles/remaining-step-row-text2
-                         [react/text {:style {:color colors/black}}
+                         [react/text {}
                           text]]])]]
     [react/view styles/bottom-container
      [react/touchable-highlight
@@ -330,9 +328,7 @@
       [react/touchable-highlight
        {:on-press #(re-frame/dispatch [:hardwallet.ui/error-button-pressed])}
        [react/view styles/bottom-button-container
-        [react/text {:style      styles/bottom-button-text
-                     :font       :medium
-                     :uppercase? false}
+        [react/text {:style styles/bottom-button-text}
          (i18n/label :t/try-again)]]]]]))
 
 (defn- loading-view [{:keys [title-label text-label estimated-time-seconds step-number]}]
@@ -340,8 +336,7 @@
   Used by 'Prepare', 'Pairing', 'Completing' screens"
   [react/view styles/loading-view-container
    [react/view styles/center-container
-    [react/text {:style styles/center-title-text
-                 :font  :bold}
+    [react/text {:style styles/center-title-text}
      (i18n/label title-label)]
     (when text-label
       [react/text {:style           styles/generating-codes-for-pairing-text
@@ -369,8 +364,7 @@
                                                        (.setNativeProps @progress-bar params))))))}
     [react/view styles/loading-view-container
      [react/view styles/center-container
-      [react/text {:style styles/center-title-text
-                   :font  :bold}
+      [react/text {:style styles/center-title-text}
        (i18n/label :t/preparing-card)]
       [react/text {:style           styles/generating-codes-for-pairing-text
                    :number-of-lines 2}
@@ -389,8 +383,7 @@
 (defn- generating-mnemonic []
   [react/view styles/loading-view-container
    [react/view styles/center-container
-    [react/text {:style styles/center-title-text
-                 :font  :bold}
+    [react/text {:style styles/center-title-text}
      (i18n/label :t/generating-mnemonic)]
     [react/text {:style styles/estimated-time-text}
      (i18n/label :t/this-will-take-few-seconds)]]
@@ -401,8 +394,7 @@
 (defn- loading-keys []
   [react/view styles/loading-view-container
    [react/view styles/center-container
-    [react/text {:style styles/center-title-text
-                 :font  :bold}
+    [react/text {:style styles/center-title-text}
      (i18n/label :t/finishing-card-setup)]
     [react/text {:style           styles/generating-codes-for-pairing-text
                  :number-of-lines 2}
@@ -416,8 +408,7 @@
 (defn- pairing []
   [react/view styles/loading-view-container
    [react/view styles/center-container
-    [react/text {:style styles/center-title-text
-                 :font  :bold}
+    [react/text {:style styles/center-title-text}
      (i18n/label :t/pairing-card)]
     [react/text {:style styles/estimated-time-text}
      (i18n/label :t/this-will-take-few-seconds)]]
