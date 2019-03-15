@@ -66,18 +66,14 @@
                     typography)
                (dissoc style :typography))
         line-height (get-line-height font-size)]
-    (if platform/android?
-      (-> style
-          (assoc :font-family (str font-family "-"
-                                   (case font-weight
-                                     400 "Regular"
-                                     500 "Medium"
-                                     600 "SemiBold"
-                                     700 "Bold")
-                                   (when (= font-style :italic)
-                                     "Italic"))
-                 :line-height line-height)
-          (dissoc :font-weight :font-style))
-      (assoc style
-             :font-family "Inter"
-             :line-height line-height))))
+    (-> style
+        (assoc :font-family (str font-family "-"
+                                 (case font-weight
+                                   400 "Regular"
+                                   500 "Medium"
+                                   600 "SemiBold"
+                                   700 "Bold")
+                                 (when (= font-style :italic)
+                                   "Italic"))
+               :line-height line-height)
+        (dissoc :font-weight :font-style))))

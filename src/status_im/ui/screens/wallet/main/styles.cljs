@@ -46,7 +46,9 @@
    :color       colors/white})
 
 (def total-balance-tilde
-  {:color colors/white-transparent})
+  {:font-size   32
+   :font-weight 400
+   :color       colors/white-transparent})
 
 (def total-balance-currency
   {:font-size   32
