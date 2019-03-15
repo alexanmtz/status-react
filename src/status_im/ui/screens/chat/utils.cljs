@@ -28,7 +28,7 @@
       (format-author from username style)))
 
 (def ^:private styling->prop
-  {:bold      {:style {:font-weight 700}}
+  {:bold      {:style {:font-weight "700"}}
    :italic    {:style {:font-style  :italic}}
    :backquote {:style {:background-color colors/black
                        :color            colors/green}}})
@@ -55,12 +55,12 @@
     (if prop-fn (prop-fn text-chunk message) prop)))
 
 (defn render-chunks [render-recipe message]
-  (map-indexed (fn [idx [text-chunk kind]]
-                 (if (= :text kind)
-                   text-chunk
-                   [react/text (into {:key idx} (lookup-props text-chunk message kind))
-                    text-chunk]))
-               render-recipe))
+  (vec (map-indexed (fn [idx [text-chunk kind]]
+                      (if (= :text kind)
+                        text-chunk
+                        [(into {:key idx} (lookup-props text-chunk message kind))
+                         text-chunk]))
+                    render-recipe)))
 
 (defn render-chunks-desktop [limit render-recipe message]
   "This fn is only needed as a temporary hack

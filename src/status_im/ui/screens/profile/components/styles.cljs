@@ -17,7 +17,7 @@
 (defstyle profile-name-text
   {:padding-vertical 8
    :text-align       :center
-   :font-weight      700})
+   :font-weight      "700"})
 
 (defstyle profile-three-words
   {:font-size   12

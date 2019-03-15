@@ -152,7 +152,7 @@
 
 (def current-snt-amount
   {:font-size   28
-   :font-weight 500})
+   :font-weight "500"})
 
 (def edit-label
   {:color colors/blue})

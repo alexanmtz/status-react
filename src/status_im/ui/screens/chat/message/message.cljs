@@ -54,7 +54,8 @@
                          justify-timestamp?
                          outgoing
                          (:rtl? content)
-                         (= content-type constants/content-type-emoji))} t]))
+                         (= content-type constants/content-type-emoji))}
+     t]))
 
 (defn message-view
   [{:keys [timestamp-str outgoing content content-type] :as message} message-content {:keys [justify-timestamp?]}]
@@ -93,15 +94,16 @@
      [react/view
       (when (:response-to content)
         [quoted-message (:response-to content) outgoing current-public-key])
-      [react/text
-       (cond-> {:style (style/text-message collapsible? outgoing)}
-         (and collapsible? (not expanded?))
-         (assoc :number-of-lines constants/lines-collapse-threshold))
-       (if-let [render-recipe (:render-recipe content)]
-         (chat.utils/render-chunks render-recipe message)
-         (:text content))
-       [react/text {:style {:color (if outgoing colors/blue colors/blue-light)}}
-        (str " AAAAA")]]
+      (apply react/nested-text
+             (cond-> {:style (style/text-message collapsible? outgoing)
+                      :text-break-strategy :balanced}
+               (and collapsible? (not expanded?))
+               (assoc :number-of-lines constants/lines-collapse-threshold))
+             (conj (if-let [render-recipe (:render-recipe content)]
+                     (chat.utils/render-chunks render-recipe message)
+                     [(:text content)])
+                   [{:style (style/message-timestamp-placeholder outgoing)}
+                    (str "  " timestamp-str)]))
 
       (when collapsible?
         [expand-button expanded? chat-id message-id])])
@@ -110,7 +112,8 @@
 (defn emoji-message
   [{:keys [content] :as message}]
   [message-view message
-   [react/text {:style (style/emoji-message message)} (:text content)]])
+   [react/text {:style (style/emoji-message message)}
+    (:text content)]])
 
 (defmulti message-content (fn [_ message _] (message :content-type)))
 
@@ -147,7 +150,7 @@
   [wrapper {:keys [content-type] :as message}]
   [wrapper message
    [message-view message
-    [react/text {} (str "Unhandled content-type " content-type)]]])
+    [react/text (str "Unhandled content-type " content-type)]]])
 
 (defn- text-status [status]
   [react/view style/delivery-view

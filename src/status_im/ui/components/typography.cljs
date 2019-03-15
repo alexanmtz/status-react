@@ -2,10 +2,10 @@
   (:require [status-im.utils.platform :as platform]
             [status-im.ui.components.colors :as colors]))
 
+(def default-font-family "Inter")
 (def default-style
-  {:font-family "Inter"
-   :color       colors/black
-   :font-weight 400
+  {:color       colors/black
+   :font-weight "400"
    :font-size   15})
 
 (defn get-line-height
@@ -39,17 +39,17 @@
        font-size))
 
 (def typography-styles
-  {:header        {:font-weight 700
+  {:header        {:font-weight "700"
                    :font-size   22}
 
-   :title-bold    {:font-weight 700
+   :title-bold    {:font-weight "700"
                    :font-size   17}
 
    :title         {:font-size   17}
 
-   :main-semibold {:font-weight 600}
+   :main-semibold {:font-weight "600"}
 
-   :main-medium   {:font-weight 500}
+   :main-medium   {:font-weight "500"}
 
    :caption       {:font-size   12}
 
@@ -60,20 +60,20 @@
 (defn get-style
   [{:keys [typography] :as style}]
   {:pre [(or (nil? typography) (contains? typography-styles typography))]}
-  (let [{:keys [font-weight font-style font-size font-family] :as style}
+  (let [{:keys [font-weight font-style font-size line-height]
+         :or {line-height (get-line-height font-size)}
+         :as style}
         (merge default-style
                (get typography-styles
                     typography)
-               (dissoc style :typography))
-        line-height (get-line-height font-size)]
+               (dissoc style :typography))]
     (-> style
-        (assoc :font-family (str font-family "-"
+        (assoc :font-family (str default-font-family "-"
                                  (case font-weight
-                                   400 "Regular"
-                                   500 "Medium"
-                                   600 "SemiBold"
-                                   700 "Bold")
+                                   "400"   "Regular"
+                                   "500"   "Medium"
+                                   "600"   "SemiBold"
+                                   "700"   "Bold")
                                  (when (= font-style :italic)
                                    "Italic"))
-               :line-height line-height)
-        (dissoc :font-weight :font-style))))
+               :line-height line-height))))

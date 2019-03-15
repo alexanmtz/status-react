@@ -12,7 +12,7 @@
   (merge (when-not small?
            {:font-size 17})
          (when subtitle
-           {:font-weight 500})))
+           {:font-weight "500"})))
 
 (def subtitle
   {:margin-top  4

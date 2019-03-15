@@ -17,7 +17,7 @@
 
 (defstyle intro-text
   {:text-align  :center
-   :font-weight 700
+   :font-weight "700"
    :font-size   24})
 
 (def intro-text-description

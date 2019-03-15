@@ -32,29 +32,20 @@
 (def backup-seed-phrase-description
   {:color colors/white-transparent})
 
-(def total-balance-container
-  {:align-items      :center
-   :justify-content  :center
+(def total-balance-text
+  {:text-align       :center
    :padding-top      49
    :padding-bottom   38
    :background-color colors/blue
-   :flex-direction   :row})
+   :color            colors/white-transparent
+   :font-size        32})
 
 (def total-balance-value
-  {:font-size   32
-   :font-weight 700
+  {:font-weight "700"
    :color       colors/white})
 
-(def total-balance-tilde
-  {:font-size   32
-   :font-weight 400
-   :color       colors/white-transparent})
-
 (def total-balance-currency
-  {:font-size   32
-   :font-weight 700
-   :margin-left 6
-   :color       colors/white-transparent})
+  {:font-weight "700"})
 
 (def snackbar-container
   {:background-color colors/gray})

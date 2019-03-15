@@ -223,7 +223,7 @@
 (def group-chat-icon
   {:color       colors/white
    :font-size   40
-   :font-weight 700})
+   :font-weight "700"})
 
 (def group-chat-join-footer
   {:position        :absolute

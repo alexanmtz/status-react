@@ -39,8 +39,7 @@
     [react/view transactions-styles/asset-main
      [react/image {:source (-> asset :icon :source)
                    :style  transactions-styles/asset-icon}]
-     [react/text {}
-      (wallet.utils/display-symbol asset)]
+     [react/text (wallet.utils/display-symbol asset)]
      [react/text {:style transactions-styles/asset-name} name]]
     ;;TODO(goranjovic) : temporarily disabled to fix https://github.com/status-im/status-react/issues/4963
     ;;until the resolution of https://github.com/status-im/status-react/issues/4972
@@ -54,7 +53,7 @@
     [react/view transactions-styles/asset-main
      [react/image {:source (-> asset :icon :source)
                    :style  transactions-styles/asset-icon}]
-     [react/text {} name]]
+     [react/text name]]
     [react/text {:style {:font-size     16
                          :color         colors/gray
                          :padding-right 14}}
@@ -120,7 +119,7 @@
                                          :margin-left  20
                                          :margin-right 20}
                                 :source {:uri image_url}}]
-            [react/text {} name]]])
+            [react/text name]]])
         collectible-tokens)])))
 
 (defview nft-token [{{:keys [name image_url]} :token}]
@@ -129,7 +128,7 @@
    [svgimage/svgimage {:style  {:width  100
                                 :height 100}
                        :source {:uri image_url}}]
-   [react/text {} name]])
+   [react/text name]])
 
 ;;TODO(goranjovic): currently we only allow tokens which are enabled in Manage assets here
 ;; because balances are only fetched for them. Revisit this decision with regard to battery/network consequences

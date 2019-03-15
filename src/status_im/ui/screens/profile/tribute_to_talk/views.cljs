@@ -199,8 +199,7 @@
      [react/view {:flex-direction :row
                   :margin-bottom  16}
       [react/view {:style styles/edit-view-message-container}
-       [react/text {}
-        message]]
+       [react/text message]]
       [react/view {:flex 1}]])
    [separator]
    [react/text {:style styles/edit-note}
@@ -234,8 +233,7 @@
                          :margin-left 4}}
      (i18n/label :t/tribute-to-talk)]]
    [react/view {:style styles/chat-sample-bubble}
-    [react/text {}
-     (i18n/label :t/tribute-to-talk-sample-text)]]
+    [react/text (i18n/label :t/tribute-to-talk-sample-text)]]
    [react/view {:style (assoc styles/chat-sample-bubble :width 141)}
     ;;TODO replace hardcoded values
     [react/text {:style {:font-size 22}} "1000"

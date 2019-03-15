@@ -38,7 +38,7 @@
    :width              230})
 
 (def author
-  {:font-weight 500
+  {:font-weight "500"
    :font-size   14})
 
 (def author-generated

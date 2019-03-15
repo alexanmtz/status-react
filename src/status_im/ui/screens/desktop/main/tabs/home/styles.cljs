@@ -59,8 +59,8 @@
 (defn chat-name [current?]
   {:font-size  14
    :font-weight (if current?
-                  700
-                  400)})
+                  "700"
+                  "400")})
 
 (def chat-last-message
   {:color      colors/gray

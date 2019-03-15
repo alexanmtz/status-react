@@ -82,7 +82,7 @@
                     :number-of-lines 2}
         (i18n/label description-label)]
        (when retry-counter
-         [react/text {:style {:font-weight 700
+         [react/text {:style {:font-weight "700"
                               :padding-top 10
                               :color       colors/red}}
           (i18n/label :t/pin-retries-left {:number retry-counter})])

@@ -50,7 +50,7 @@
    [toolbar/toolbar (assoc-in props [:style :border-bottom-color] colors/white-light-transparent)
     [toolbar/nav-button action]
     [toolbar/content-title {:color       colors/white
-                            :font-weight 700}
+                            :font-weight "700"}
      title]
     options]))
 

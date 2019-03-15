@@ -36,13 +36,21 @@
   {:font-size  10
    :align-self :flex-end})
 
-(defn message-timestamp-text [justify-timestamp? outgoing rtl? emoji?]
+(defn message-timestamp-placeholder
+  [outgoing]
+  (assoc message-timestamp
+         :color (if outgoing
+                  colors/blue
+                  colors/blue-light)))
+
+(defn message-timestamp-text
+  [justify-timestamp? outgoing rtl? emoji?]
   (merge message-timestamp
          {:color (if (and outgoing (not emoji?))
                    (colors/alpha colors/white 0.7)
                    colors/gray)}
          (when justify-timestamp? {:position              :absolute
-                                   :bottom                8
+                                   :bottom                7
                                    (if rtl? :left :right) 12})))
 
 (def message-expand-button
@@ -160,7 +168,7 @@
 
 (defn message-author-name [chosen?]
   {:font-size           (if chosen? 13 12)
-   :font-weight         (if chosen? 500 400)
+   :font-weight         (if chosen? "500" "400")
    :padding-top         6
    :padding-left        12
    :padding-right       16

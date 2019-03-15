@@ -42,8 +42,7 @@
        :on-value-change #(re-frame/dispatch [:mobile-network/remember-choice? %])}]
      [react/view
       {:style styles/checkbox-text-container}
-      [react/text {:style {}}
-       (i18n/label :mobile-network-sheet-remember-choice)]]]))
+      [react/text (i18n/label :mobile-network-sheet-remember-choice)]]]))
 
 (defn settings []
   [react/view

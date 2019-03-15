@@ -17,7 +17,7 @@
    :padding-bottom     10})
 
 (def title-text
-  {:font-weight 700})
+  {:font-weight "700"})
 
 (def label
   {:padding-horizontal 16})

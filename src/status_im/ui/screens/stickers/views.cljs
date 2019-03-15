@@ -51,7 +51,7 @@
     [react/view {:height 64 :align-items :center :flex-direction :row}
      [thumbnail-icon thumbnail 40]
      [react/view {:padding-horizontal 16 :flex 1}
-      [react/text {} name]
+      [react/text name]
       [react/text {:style {:color colors/gray :margin-top 6}} author]]
      (if installed
        [installed-icon]

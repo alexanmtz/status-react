@@ -138,7 +138,7 @@
    :margin-left  6
    :margin-right 4
    :font-size    11
-   :font-weight  700})
+   :font-weight  "700"})
 
 (def base-separator
   {:height           1

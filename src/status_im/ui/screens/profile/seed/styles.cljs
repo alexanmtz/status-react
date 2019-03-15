@@ -119,7 +119,7 @@
    :margin-bottom  32})
 
 (def backup-seed
-  {:font-weight 700
+  {:font-weight "700"
    :text-align  :center})
 
 (def step-n

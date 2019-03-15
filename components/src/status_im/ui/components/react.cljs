@@ -5,6 +5,7 @@
             [reagent.core :as reagent]
             [status-im.ui.components.styles :as styles]
             [status-im.utils.utils :as utils]
+            [status-im.utils.core :as utils.core]
             [status-im.utils.platform :as platform]
             [status-im.i18n :as i18n]
             [status-im.react-native.js-dependencies :as js-dependencies]
@@ -88,14 +89,30 @@
 
 ;; Accessor methods for React Components
 (defn text
-  [{:keys [style] :as options} label & nested-text-elements]
-  (let [text-element [text-class
-                      (-> options
-                          (update :style typography/get-style))
-                      label]]
-    (if (empty? nested-text-elements)
-      text-element
-      (vec (concat text-element nested-text-elements)))))
+  "For nested text elements, use nested-text instead"
+  ([text-element]
+   [text {} text-element])
+  ([options text-element]
+   [text-class (update options :style typography/get-style) text-element]))
+
+(defn nested-text
+  ([options & nested-text-elements]
+   (println options nested-text-elements)
+   (let [options-with-style (update options :style typography/get-style)]
+     (reduce (fn [acc text-element]
+               (conj acc
+                     (cond
+                       (string? text-element)
+                       [text-class options-with-style text-element]
+
+                       (vector? text-element)
+                       (let [[options nested-text-elements] text-element]
+                         [nested-text (update (utils.core/deep-merge options-with-style
+                                                                     options)
+                                              :style typography/get-style)
+                          nested-text-elements]))))
+             [text-class options-with-style]
+             nested-text-elements))))
 
 (defn text-input
   [options text]

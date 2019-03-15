@@ -116,8 +116,7 @@
                                 :background-color colors/gray-lighter}}]
            [seed.views/six-words (subvec mnemonic-vec 6 12)]]
           [react/view styles/recovery-phrase-description
-           [react/text {}
-            (i18n/label :t/your-recovery-phrase-description)]]]]]
+           [react/text (i18n/label :t/your-recovery-phrase-description)]]]]]
        [react/view styles/next-button-container
         [react/view components.styles/flex]
         [react/view {:margin-right 20}
@@ -278,11 +277,9 @@
                            ["5" (i18n/label :t/recovery-phrase)]]]
         ^{:key number} [react/view styles/remaining-step-row
                         [react/view styles/remaining-step-row-text
-                         [react/text {}
-                          number]]
+                         [react/text number]]
                         [react/view styles/remaining-step-row-text2
-                         [react/text {}
-                          text]]])]]
+                         [react/text text]]])]]
     [react/view styles/bottom-container
      [react/touchable-highlight
       {:on-press #(re-frame/dispatch [:hardwallet.ui/begin-setup-button-pressed])}

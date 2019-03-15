@@ -35,7 +35,7 @@
   {:ios        {:font-size 11}
    :android    {:font-size 11}
    :desktop    {:font-size   12
-                :font-weight (if active? 600 400)}
+                :font-weight (if active? "600" "400")}
    :text-align :center
    :color      (if active?
                  colors/blue

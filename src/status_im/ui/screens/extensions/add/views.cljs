@@ -44,28 +44,21 @@
              [react/text {:style {:color colors/white}}
               (i18n/label :t/extensions-disclaimer)]]
             [cartouche {:header (i18n/label :t/identifier)}
-             [react/text {}
-              (str (get-in data ['meta :name]))]]
+             [react/text (str (get-in data ['meta :name]))]]
             [cartouche {:header (i18n/label :t/name)}
-             [react/text {}
-              (str (get-in data ['meta :name]))]]
+             [react/text (str (get-in data ['meta :name]))]]
             [cartouche {:header (i18n/label :t/description)}
-             [react/text {}
-              (str (get-in data ['meta :description]))]]
+             [react/text (str (get-in data ['meta :description]))]]
             [cartouche {:header (i18n/label :t/hooks)}
              (into [react/view] (for [hook (hooks data)]
-                                  [react/text {}
-                                   (str hook)]))]
+                                  [react/text (str hook)]))]
             [cartouche {:header (i18n/label :t/permissions)}
-             [react/text {}
-              (i18n/label :t/none)]]
+             [react/text (i18n/label :t/none)]]
             [cartouche {:header (i18n/label :t/errors)}
              (if errors
                (into [react/view] (for [error errors]
-                                    [react/text {}
-                                     (str (name (:pluto.reader.errors/type error)) " " (str (:pluto.reader.errors/value error)))]))
-               [react/text {}
-                (i18n/label :t/none)])]]]
+                                    [react/text (str (name (:pluto.reader.errors/type error)) " " (str (:pluto.reader.errors/value error)))]))
+               [react/text (i18n/label :t/none)])]]]
           [react/view styles/bottom-container
            [react/view components.styles/flex]
            [components.common/bottom-button

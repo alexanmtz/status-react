@@ -108,10 +108,9 @@
            [react/text {:style    styles/text
                         :on-press on-press-fn}
             (if (= message :mobile-network)
-              [react/text {}
+              [react/text
                (i18n/label :t/waiting-for-wifi) " "
-               [react/text
-                {:style {:text-decoration-line :underline}}
+               [react/text {:style {:text-decoration-line :underline}}
                 (i18n/label :t/waiting-for-wifi-change)]]
               (i18n/label message))]]))})))
 

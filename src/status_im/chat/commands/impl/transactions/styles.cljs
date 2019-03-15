@@ -72,7 +72,7 @@
 (defn command-send-amount-text
   [outgoing]
   {:font-size   22
-   :font-weight 600
+   :font-weight "600"
    :color       (if outgoing colors/white colors/blue)})
 
 (def command-send-currency
