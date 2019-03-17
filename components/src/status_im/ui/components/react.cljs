@@ -97,7 +97,6 @@
 
 (defn nested-text
   ([options & nested-text-elements]
-   (println options nested-text-elements)
    (let [options-with-style (update options :style typography/get-style)]
      (reduce (fn [acc text-element]
                (conj acc
