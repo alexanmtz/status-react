@@ -9,7 +9,6 @@
             [status-im.ui.components.react :as react]
             [status-im.ui.components.icons.vector-icons :as vector-icons]
             [status-im.ui.components.colors :as colors]
-            [status-im.ui.components.chat-preview :as chat-preview]
             [status-im.ui.components.list.views :as list]
             [status-im.ui.components.animation :as animation]
             [status-im.ui.components.svgimage :as svgimage]
@@ -83,7 +82,7 @@
 (defn personal-send-request-short-preview
   [label-key {:keys [content]}]
   (let [{:keys [amount coin]} (:params content)]
-    [chat-preview/text {}
+    [react/text {:number-of-lines 1}
      (i18n/label label-key {:amount (i18n/label-number amount)
                             :asset  (wallet.utils/display-symbol coin)})]))
 
