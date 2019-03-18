@@ -123,7 +123,7 @@ class AddressText(BaseButton):
 class SetUpButton(BaseButton):
     def __init__(self, driver):
         super(SetUpButton, self).__init__(driver)
-        self.locator = self.Locator.text_selector("LET’S GET SET UP")
+        self.locator = self.Locator.text_selector("Let’s get set up")
 
 
 class SignInPhraseText(BaseText):

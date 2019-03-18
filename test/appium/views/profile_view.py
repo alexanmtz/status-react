@@ -191,7 +191,7 @@ class OkContinueButton(BaseButton):
 
     def __init__(self, driver):
         super(OkContinueButton, self).__init__(driver)
-        self.locator = self.Locator.xpath_selector("//*[@text='OK, CONTINUE']")
+        self.locator = self.Locator.xpath_selector("//*[@text='Ok, continue']")
 
 
 class RecoveryPhraseTable(BaseText):

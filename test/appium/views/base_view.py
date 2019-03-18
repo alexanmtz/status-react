@@ -164,7 +164,7 @@ class NextButton(BaseButton):
     def __init__(self, driver):
         super(NextButton, self).__init__(driver)
         self.locator = self.Locator.xpath_selector(
-            "//android.widget.TextView[@text='NEXT']")
+            "//android.widget.TextView[@text='Next']")
 
 
 class AddButton(BaseButton):
