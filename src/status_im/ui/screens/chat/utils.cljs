@@ -11,15 +11,15 @@
 
 (defn format-author [from username style]
   ;; TODO: We defensively generate the name for now, to be revisited when new protocol is defined
-  (cond->> [react/text {:style (style false)
-                        :number-of-lines 1
-                        :ellipsize-mode  :tail}
-            (gfycat/generate-gfy from)]
-    username
-    (conj [react/text {:style (style true)
-                       :number-of-lines 1
-                       :ellipsize-mode  :tail}
-           (str username " • ")])))
+  [react/nested-text {:style (style false)
+                      :number-of-lines 1
+                      :ellipsize-mode  :tail}
+   (when username
+     [{:style (style true)
+       :number-of-lines 1
+       :ellipsize-mode  :tail}
+      (str username " • ")])
+   (gfycat/generate-gfy from)])
 
 (defn format-reply-author [from username current-public-key style]
   (or (and (= from current-public-key)
