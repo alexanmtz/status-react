@@ -126,6 +126,7 @@
 (defn text-message
   [collapsed? outgoing]
   (assoc (style-message-text outgoing)
+         :line-height 22
          :margin-bottom (if collapsed? 2 0)))
 
 (defnstyle emoji-message
