@@ -122,7 +122,8 @@
      :placeholder             (i18n/label :t/type-a-message)
      :value                   text}
     (-> options
-        (update :style typography/get-style)))])
+        (update :style typography/get-style)
+        (update :style dissoc :line-height)))])
 
 (defn i18n-text
   [{:keys [style key]}]
